@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "identity.test": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  complaint_api:
+    image: ${DOCKER_REGISTRY-}complaintapi
+    build:
+      context: .
+      dockerfile: complaint_API\Dockerfile
+
+  complaint.test:
+    image: ${DOCKER_REGISTRY-}complainttest
+    build:
+      context: .
+      dockerfile: complaint.Test\Dockerfile
+
+
+  identity.api:
+    image: ${DOCKER_REGISTRY-}identityapi
+    build:
+      context: .
+      dockerfile: identity.API\Dockerfile
+
+
+  identity.test:
+    image: ${DOCKER_REGISTRY-}identitytest
+    build:
+      context: .
+      dockerfile: identity.test\Dockerfile
+
