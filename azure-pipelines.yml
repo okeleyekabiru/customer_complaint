@@ -27,3 +27,24 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/complaint.Test/Dockerfile'
         tags: |
           $(tag)
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/complaint_API/Dockerfile'
+        tags: |
+          $(tag)
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/identity.test/Dockerfile'
+        tags: |
+          $(tag)
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/identity.API/Dockerfile'
+        tags: |
+          $(tag)
