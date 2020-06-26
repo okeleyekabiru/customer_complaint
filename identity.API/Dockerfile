@@ -10,15 +10,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1809 AS build
 WORKDIR /src
-COPY ["complaint_solution.sln", "complaint_solution.sln"]
-COPY ["complaint.Test/complaint.Test.csproj", "complaint.Test/"]
-COPY ["complaint_API/complaint_API.csproj", "complaint_API/"]
-COPY ["complaint.Data/complaint.Data.csproj", "complaint.Data/"]
-COPY ["EventBus.RabbitMQ/EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
-COPY ["identity.API/identity.API.csproj", "identity.API/"]
-COPY ["identity.Data/identity.Data.csproj", "identity.Data/"]
-COPY ["identity.test/identity.test.csproj", "identity.test/"]
-RUN dotnet restore "complaint_solution.sln"
+COPY ["identity.API.csproj", "identity.API/"]
+COPY ["identity.Data.csproj", "identity.Data/"]
+COPY ["EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
+RUN dotnet restore "identity.API.csproj"
 COPY . .
 WORKDIR "/src/identity.API"
 RUN dotnet build "identity.API.csproj" -c Release -o /app/build
