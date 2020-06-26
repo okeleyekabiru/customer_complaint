@@ -25,6 +25,7 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/complaint.Test/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
     - task: Docker@2
@@ -32,6 +33,7 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/complaint_API/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
     - task: Docker@2
@@ -39,6 +41,7 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/identity.test/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
     - task: Docker@2
@@ -46,5 +49,6 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/identity.API/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
