@@ -1,0 +1,27 @@
+﻿{
+  "Routes": [
+
+    {
+      "DownstreamPathTemplate": "/api/v1/complaint",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "complaint_api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/complaint",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
+    }
+
+
+
+
+  ],
+
+  "GlobalConfiguration": {
+    "baseUrl": "http://localhost:7000"
+    //"RequestIdKey": "OcRequestId",
+    //"AdministrationPath": "/administration"
+  }
+}
