@@ -15,6 +15,17 @@ COPY ["EventBus.RabbitMQ/EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
 RUN dotnet restore "identity.test/identity.test.csproj"
 COPY . .
 WORKDIR "/src/identity.test"
+# test
+# use the label to identity this layer later
+LABEL test=true
+# install the report generator tool
+RUN dotnet tool install dotnet-reportgenerator-globaltool --version 4.0.6 --tool-path /tools
+# run the test and collect code coverage (requires coverlet.msbuild to be added to test project)
+# for exclude, use %2c for ,
+RUN dotnet test --results-directory /testresults --logger "trx;LogFileName=test_results.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/testresults/coverage/ /p:Exclude="[xunit.*]*%2c[StackExchange.*]*" ./test/PartsUnlimited.UnitTests/PartsUnlimited.UnitTests.csproj
+# generate html reports using report generator tool
+RUN /tools/reportgenerator "-reports:/testresults/coverage/coverage.cobertura.xml" "-targetdir:/testresults/coverage/reports" "-reporttypes:HTMLInline;HTMLChart"
+RUN ls -la /testresults/coverage/reports
 RUN dotnet build "identity.test.csproj" -c Release -o /app/build
 
 FROM build AS publish
