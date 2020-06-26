@@ -19,32 +19,15 @@ stages:
     displayName: Build
     pool:
       vmImage: 'windows-latest'
-    variables:
-      imageName: 'partsunlimitedwebsite:$(build.buildNumber)'
-
     steps:
-    - script: docker build -f Dockerfile -t $(imageName) .
-      displayName: 'docker build'
-      continueOnError: true
-    - script: |
-        export id=$(docker images --filter "label=test=true" -q | head -1)
-        docker create --name testcontainer $id
-        docker cp testcontainer:/testresults ./testresults
-        docker rm testcontainer
-      displayName: 'get test results'
-    - task: PublishCodeCoverageResults@1
+    - task: Docker@2
+      displayName: Build an image
       inputs:
-        codeCoverageTool: 'cobertura'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'
-        reportDirectory: '$(System.DefaultWorkingDirectory)/testresults/coverage/reports'
-      displayName: 'Publish coverage reports'
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: 'cobertura'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'
-        reportDirectory: '$(System.DefaultWorkingDirectory)/testresults/coverage/reports'
-      displayName: 'Publish coverage reports'
-    
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/complaint.Test/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
+        tags: |
+          $(tag)
     - task: Docker@2
       displayName: Build an image
       inputs:
@@ -53,7 +36,14 @@ stages:
         buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
-  
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/identity.test/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
+        tags: |
+          $(tag)
     - task: Docker@2
       displayName: Build an image
       inputs:
