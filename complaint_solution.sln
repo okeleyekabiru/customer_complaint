@@ -9,19 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "complaint", "complaint", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eventbus", "eventbus", "{9CF33F85-10A7-487C-8EF1-5AB5D399BBFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "complaint_API", "complaint_API\complaint_API.csproj", "{D39F055E-A45B-45CF-AF71-95B47440EAAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "complaint_API", "complaint_API\complaint_API.csproj", "{D39F055E-A45B-45CF-AF71-95B47440EAAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "complaint.Data", "complaint.Data\complaint.Data.csproj", "{FAA5DBEF-85CE-4D61-A336-B40A76EC1587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "complaint.Data", "complaint.Data\complaint.Data.csproj", "{FAA5DBEF-85CE-4D61-A336-B40A76EC1587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "complaint.Test", "complaint.Test\complaint.Test.csproj", "{8AFB407C-DC42-4C9F-8019-4D38603546B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "complaint.Test", "complaint.Test\complaint.Test.csproj", "{8AFB407C-DC42-4C9F-8019-4D38603546B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.RabbitMQ", "EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{42ED0A8E-181D-4B0E-91AB-F0129073257F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{42ED0A8E-181D-4B0E-91AB-F0129073257F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "identity.API", "identity.API\identity.API.csproj", "{D587709C-C72E-4B0B-A80A-E856393150EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "identity.API", "identity.API\identity.API.csproj", "{D587709C-C72E-4B0B-A80A-E856393150EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "identity.Data", "identity.Data\identity.Data.csproj", "{0DB8680E-3F55-4E79-BC90-B788B3A04C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "identity.Data", "identity.Data\identity.Data.csproj", "{0DB8680E-3F55-4E79-BC90-B788B3A04C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "identity.test", "identity.test\identity.test.csproj", "{643ED202-8E00-49BC-B379-D827525DF3F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "identity.test", "identity.test\identity.test.csproj", "{643ED202-8E00-49BC-B379-D827525DF3F4}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9EFDD5BA-A448-4093-9643-5F8891390762}"
 EndProject
@@ -29,6 +29,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "complaint_gateway", "complaint_gateway", "{879E4EA0-7305-4F58-8CE7-F8E32AEE46CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "complaint_gateway.APi", "complaint_gateway.APi\complaint_gateway.APi.csproj", "{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gateway.Data", "gateway.Data\gateway.Data.csproj", "{6F4CDCBC-EA8B-43E7-95BD-CF906E504D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gateway.Test", "gateway.Test\gateway.Test.csproj", "{F489FEF7-CE5E-4507-9178-56EEAFC61086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +76,18 @@ Global
 		{9EFDD5BA-A448-4093-9643-5F8891390762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EFDD5BA-A448-4093-9643-5F8891390762}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EFDD5BA-A448-4093-9643-5F8891390762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4CDCBC-EA8B-43E7-95BD-CF906E504D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4CDCBC-EA8B-43E7-95BD-CF906E504D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4CDCBC-EA8B-43E7-95BD-CF906E504D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4CDCBC-EA8B-43E7-95BD-CF906E504D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F489FEF7-CE5E-4507-9178-56EEAFC61086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F489FEF7-CE5E-4507-9178-56EEAFC61086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F489FEF7-CE5E-4507-9178-56EEAFC61086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F489FEF7-CE5E-4507-9178-56EEAFC61086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +100,9 @@ Global
 		{D587709C-C72E-4B0B-A80A-E856393150EC} = {925813A7-FB8B-4DCF-B975-569A0782D1FA}
 		{0DB8680E-3F55-4E79-BC90-B788B3A04C31} = {925813A7-FB8B-4DCF-B975-569A0782D1FA}
 		{643ED202-8E00-49BC-B379-D827525DF3F4} = {925813A7-FB8B-4DCF-B975-569A0782D1FA}
+		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A} = {879E4EA0-7305-4F58-8CE7-F8E32AEE46CD}
+		{6F4CDCBC-EA8B-43E7-95BD-CF906E504D94} = {879E4EA0-7305-4F58-8CE7-F8E32AEE46CD}
+		{F489FEF7-CE5E-4507-9178-56EEAFC61086} = {879E4EA0-7305-4F58-8CE7-F8E32AEE46CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5FEB5E1-79EE-46BB-858E-DD908CA93FE4}

@@ -8,12 +8,13 @@ using Microsoft.Extensions.Logging;
 namespace complaint_API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/api/v1/complaint")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Freezing", "Bracing", "Chilly","auth", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+
         };
 
         private readonly ILogger<WeatherForecastController> _logger;

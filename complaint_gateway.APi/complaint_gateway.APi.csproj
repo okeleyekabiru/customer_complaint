@@ -2,26 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>59f786e6-8506-4f83-9630-cc88fa4ee750</UserSecretsId>
+    <UserSecretsId>9da7f5d1-8ac9-494c-b030-aee2a4a99f57</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="launchSettings.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="launchSettings.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Ocelot" Version="16.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\complaint.Data\complaint.Data.csproj" />
     <ProjectReference Include="..\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\gateway.Data\gateway.Data.csproj" />
   </ItemGroup>
 
 
