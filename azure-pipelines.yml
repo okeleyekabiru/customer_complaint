@@ -52,3 +52,19 @@ stages:
         buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/complaint_gateway.api/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
+        tags: |
+          $(tag)
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/gateway.test/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
+        tags: |
+          $(tag)
