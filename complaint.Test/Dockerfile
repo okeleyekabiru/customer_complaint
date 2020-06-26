@@ -9,9 +9,9 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1809 AS build
 WORKDIR /src
 COPY ["complaint.Test.csproj", "complaint.Test/"]
-COPY ["complaint_API.csproj", "complaint_API/"]
-COPY ["complaint.Data.csproj", "complaint.Data/"]
-COPY ["EventBus.RabbitMQ/EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
+COPY ["../complaint_API/complaint_API.csproj", "complaint_API/"]
+COPY ["../complaint.Data/complaint.Data.csproj", "complaint.Data/"]
+COPY ["../EventBus.RabbitMQ/EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
 RUN dotnet restore "complaint.Test/complaint.Test.csproj"
 COPY . .
 WORKDIR "/src/complaint.Test"
