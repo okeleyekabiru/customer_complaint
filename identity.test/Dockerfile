@@ -9,9 +9,9 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1809 AS build
 WORKDIR /src
 COPY ["identity.test.csproj", "identity.test/"]
-COPY ["identity.API.csproj", "identity.API/"]
-COPY ["identity.Data.csproj", "identity.Data/"]
-COPY ["EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
+COPY ["identity.API/identity.API.csproj", "identity.API/"]
+COPY ["identity.Data/identity.Data.csproj", "identity.Data/"]
+COPY ["EventBus.RabbitMQ/EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
 RUN dotnet restore "identity.test/identity.test.csproj"
 COPY . .
 WORKDIR "/src/identity.test"
