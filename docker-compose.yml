@@ -27,3 +27,17 @@ services:
       context: .
       dockerfile: identity.test\Dockerfile
 
+
+  complaint_gateway.api:
+    image: ${DOCKER_REGISTRY-}complaintgatewayapi
+    build:
+      context: .
+      dockerfile: complaint_gateway.APi\Dockerfile
+
+
+  gateway.test:
+    image: ${DOCKER_REGISTRY-}gatewaytest
+    build:
+      context: .
+      dockerfile: gateway.Test\Dockerfile
+

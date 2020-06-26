@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "gateway.Test": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
