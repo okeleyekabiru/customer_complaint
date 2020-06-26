@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Ocelot.DependencyInjection;
 
 namespace complaint_gateway.APi
 {
@@ -25,8 +26,14 @@ namespace complaint_gateway.APi
             var builder = WebHost.CreateDefaultBuilder(args);
 
             builder.ConfigureServices(s => s.AddSingleton(builder))
-                .ConfigureAppConfiguration(
-                    ic => ic.AddJsonFile("configuration.json"))
+                .ConfigureAppConfiguration((hostingContext, config)=>{
+                    config
+                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("appsettings.json", true, true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                        .AddJsonFile("ocelot.json")
+                        .AddEnvironmentVariables();
+                })
                 .UseStartup<Startup>();
             var host = builder.Build();
             return host;
