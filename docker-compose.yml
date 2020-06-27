@@ -41,3 +41,10 @@ services:
       context: .
       dockerfile: gateway.Test\Dockerfile
 
+
+  identityserver:
+    image: ${DOCKER_REGISTRY-}identityserver
+    build:
+      context: .
+      dockerfile: IdentityServer\Dockerfile
+

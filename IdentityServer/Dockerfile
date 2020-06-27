@@ -3,23 +3,23 @@
 #Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
 #For more information, please see https://aka.ms/containercompat
 
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1-nanoserver-1809 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-nanoserver-1809 AS base
 WORKDIR /app
+EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1809 AS build
 WORKDIR /src
-COPY ["identity.test/identity.test.csproj", "identity.test/"]
-COPY ["Identity.API/Identity.API.csproj", "Identity.API/"]
-COPY ["identity.Data/identity.Data.csproj", "identity.Data/"]
-RUN dotnet restore "identity.test/identity.test.csproj"
+COPY ["IdentityServer/IdentityServer.csproj", "IdentityServer/"]
+RUN dotnet restore "IdentityServer/IdentityServer.csproj"
 COPY . .
-WORKDIR "/src/identity.test"
-RUN dotnet build "identity.test.csproj" -c Release -o /app/build
+WORKDIR "/src/IdentityServer"
+RUN dotnet build "IdentityServer.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "identity.test.csproj" -c Release -o /app/publish
+RUN dotnet publish "IdentityServer.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "identity.test.dll"]
+ENTRYPOINT ["dotnet", "IdentityServer.dll"]

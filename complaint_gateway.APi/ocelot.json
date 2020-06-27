@@ -20,7 +20,7 @@
   ],
 
   "GlobalConfiguration": {
-    "baseUrl": "http://localhost:7000"
+    
     //"RequestIdKey": "OcRequestId",
     //"AdministrationPath": "/administration"
   }
