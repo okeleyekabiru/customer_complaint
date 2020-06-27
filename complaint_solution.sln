@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9EFDD5BA-A448-4093-9643-5F8891390762}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{41CACEEE-1987-4ED3-BB5E-AF121C3C7505}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -36,9 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "complaint.Data", "complaint
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{D2260BF3-B86B-43D6-98A3-C8226E1CB0F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{9D1BD185-15D8-4EEF-A848-3D6DB15DC048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{9D1BD185-15D8-4EEF-A848-3D6DB15DC048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "Identity.API\Identity.API.csproj", "{5491FE35-7B5E-40EB-92E2-0EF98B955900}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +44,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9EFDD5BA-A448-4093-9643-5F8891390762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EFDD5BA-A448-4093-9643-5F8891390762}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EFDD5BA-A448-4093-9643-5F8891390762}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EFDD5BA-A448-4093-9643-5F8891390762}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C80CD4A2-461F-4F97-A2C9-1543D2694C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -90,10 +84,10 @@ Global
 		{9D1BD185-15D8-4EEF-A848-3D6DB15DC048}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D1BD185-15D8-4EEF-A848-3D6DB15DC048}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D1BD185-15D8-4EEF-A848-3D6DB15DC048}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5491FE35-7B5E-40EB-92E2-0EF98B955900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5491FE35-7B5E-40EB-92E2-0EF98B955900}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5491FE35-7B5E-40EB-92E2-0EF98B955900}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5491FE35-7B5E-40EB-92E2-0EF98B955900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,7 +103,6 @@ Global
 		{A5EE8A56-32EB-4FB9-8A35-8E78A4A26E6A} = {180462F5-873F-4F09-BCE7-EBE3927507F4}
 		{D2260BF3-B86B-43D6-98A3-C8226E1CB0F2} = {C4669AC4-04EC-4A45-BD68-9BECBDC650F6}
 		{9D1BD185-15D8-4EEF-A848-3D6DB15DC048} = {8EE1C73F-8ABA-485A-90D3-744B6EA1A699}
-		{5491FE35-7B5E-40EB-92E2-0EF98B955900} = {8EE1C73F-8ABA-485A-90D3-744B6EA1A699}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5FEB5E1-79EE-46BB-858E-DD908CA93FE4}

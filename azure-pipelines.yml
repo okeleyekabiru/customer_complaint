@@ -48,7 +48,7 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        dockerfile: '$(Build.SourcesDirectory)/identity.API/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/Identity.API/Dockerfile'
         buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
@@ -65,6 +65,14 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/gateway.test/Dockerfile'
+        buildContext: '$(Build.Repository.LocalPath)'
+        tags: |
+          $(tag)
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/IdentityServer/Dockerfile'
         buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)

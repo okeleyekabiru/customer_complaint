@@ -11,16 +11,23 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v1/complaint",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "customer_complaintKey",
+        "AllowedScopes": [
+
+        ]
+      }
     }
 
 
 
 
   ],
+ 
 
   "GlobalConfiguration": {
-    
+
     //"RequestIdKey": "OcRequestId",
     //"AdministrationPath": "/administration"
   }
