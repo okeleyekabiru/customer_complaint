@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using identity.Data.Abstraction;
 using identity.Data.Model;
 using identity.Data.Repository;
 using IdentityServer.configuration;
@@ -47,7 +48,7 @@ namespace IdentityServer
 
 
             }).AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders(); 
-
+            services.AddScoped<IUser,UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
