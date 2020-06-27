@@ -21,19 +21,18 @@ namespace identity.Data.Repository
         }
         public async Task<User> Login(User user, string password)
         {
-            var users = await _userManager.FindByEmailAsync(user.Email);
-            if (users == null)
+          var   result = await _signInManager.CheckPasswordSignInAsync(user, password,false);
+            if (!result.Succeeded)
             {
-                throw new UserNotFoundException();
+                return null;
             }
-
-             await _signInManager.CheckPasswordSignInAsync(user, password,false);
              return user;
 
         }
         
         public async Task<User> Register(User user, string password)
         {
+            user.UserName = user.Email;
           var result = await _userManager.CreateAsync(user, password);
           if (result.Succeeded)
           {

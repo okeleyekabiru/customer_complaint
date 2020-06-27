@@ -31,6 +31,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\identity.Data\identity.Data.csproj" />
+    <ProjectReference Include="..\Reponse\Response.csproj" />
   </ItemGroup>
 
 </Project>

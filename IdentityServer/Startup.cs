@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using identity.Data.Abstraction;
 using identity.Data.Model;
 using identity.Data.Repository;
 using IdentityServer.configuration;
+using IdentityServer.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -49,6 +51,7 @@ namespace IdentityServer
 
             }).AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders(); 
             services.AddScoped<IUser,UserRepository>();
+            services.AddAutoMapper(typeof(CreateProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

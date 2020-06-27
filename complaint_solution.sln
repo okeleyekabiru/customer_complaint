@@ -38,6 +38,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityS
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Response", "Response", "{09A7B448-2044-482F-8D7F-FE0786616893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Response", "Reponse\Response.csproj", "{C76CF2B8-9516-40C7-B892-B0D12423126B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +92,10 @@ Global
 		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3FF51DA-05DF-44E1-9DDD-5526374DC32B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C76CF2B8-9516-40C7-B892-B0D12423126B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76CF2B8-9516-40C7-B892-B0D12423126B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76CF2B8-9516-40C7-B892-B0D12423126B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76CF2B8-9516-40C7-B892-B0D12423126B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +111,7 @@ Global
 		{A5EE8A56-32EB-4FB9-8A35-8E78A4A26E6A} = {180462F5-873F-4F09-BCE7-EBE3927507F4}
 		{D2260BF3-B86B-43D6-98A3-C8226E1CB0F2} = {C4669AC4-04EC-4A45-BD68-9BECBDC650F6}
 		{9D1BD185-15D8-4EEF-A848-3D6DB15DC048} = {8EE1C73F-8ABA-485A-90D3-744B6EA1A699}
+		{C76CF2B8-9516-40C7-B892-B0D12423126B} = {09A7B448-2044-482F-8D7F-FE0786616893}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5FEB5E1-79EE-46BB-858E-DD908CA93FE4}

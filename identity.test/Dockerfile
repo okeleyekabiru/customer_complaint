@@ -11,6 +11,7 @@ WORKDIR /src
 COPY ["identity.test/identity.test.csproj", "identity.test/"]
 COPY ["IdentityServer/IdentityServer.csproj", "IdentityServer/"]
 COPY ["identity.Data/identity.Data.csproj", "identity.Data/"]
+COPY ["Reponse/Response.csproj", "Reponse/"]
 COPY ["EventBus.RabbitMQ/EventBus.RabbitMQ.csproj", "EventBus.RabbitMQ/"]
 RUN dotnet restore "identity.test/identity.test.csproj"
 COPY . .
