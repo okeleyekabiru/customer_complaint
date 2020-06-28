@@ -22,30 +22,38 @@ namespace IdentityServer.controller
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly IUser _userRepository;
+        private readonly IHttpContextAccessor _contextAccessor;
         private readonly IMapper _mapper;
 
-        public AuthController(IHttpClientFactory clientFactory,IUser userRepository,IMapper mapper)
+        public AuthController(IHttpClientFactory clientFactory,IUser userRepository,IMapper mapper,IHttpContextAccessor contextAccessor)
         {
             _clientFactory = clientFactory;
             _userRepository = userRepository;
+            _contextAccessor = contextAccessor;
             _mapper = mapper;
         }
+        [HttpPost("login")]
         public async Task<IActionResult> Signin([FromBody]LoginDto model)
         {
             UserDto userDto = null;
+            TokenResponse tokenResponse = null;
+            TokenResponse usertoken = null;
+
             try
             {
 
-
+                
                 var client = _clientFactory.CreateClient();
-
-                var disco = await client.GetDiscoveryDocumentAsync("https://localhost:7005");
+                
+                var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
                 if (disco.IsError)
                 {
-                    return BadRequest(disco.Error);
+                    
+                    return BadRequest(Responses<string>.BadResponse("an error occured while requesting for user token",
+                        disco.Error));
                 }
 
-                var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                 {
                     Address = disco.TokenEndpoint,
                     ClientId = "customer_complaint_client",
@@ -54,20 +62,6 @@ namespace IdentityServer.controller
                     Scope = "customer_complaint",
 
                 });
-                var user = new PasswordTokenRequest();
-                user.Password = model.Password;
-                user.UserName = model.Email;
-                user.ClientId = "customer_complaint_client";
-                user.Address = disco.TokenEndpoint;
-                user.Scope = "customer_complaint";
-                var usertoken = await
-                    client.RequestPasswordTokenAsync(user);
-                if (usertoken.IsError)
-                {
-                    return BadRequest(Responses<string>.BadResponse("an error occured while requesting for user token",
-                        usertoken.Error));
-                }
-
                 if (tokenResponse.IsError)
                 {
                     return BadRequest(
@@ -75,6 +69,26 @@ namespace IdentityServer.controller
                             tokenResponse.Error));
                 }
 
+                var user = new PasswordTokenRequest();
+                user.Password = model.Password;
+                user.UserName = model.Email;
+                user.ClientId = "customer_complaint_client";
+                user.SetBearerToken(tokenResponse.AccessToken);
+                user.ClientSecret = "secret";
+                user.Address = disco.TokenEndpoint;
+                user.Scope = "customer_complaint";
+                user.GrantType = "ResourceOwnerPassword";
+                 usertoken = await
+                    client.RequestPasswordTokenAsync(user);
+                if (usertoken.IsError)
+                {
+                    var e = usertoken.Error;
+                   
+                    return BadRequest(Responses<string>.BadResponse("an error occured while requesting for user token",
+                        usertoken.Error));
+                }
+
+                
 
 
                 var users = await _userRepository.GetUserByEmail(email: model.Email);
@@ -95,7 +109,8 @@ namespace IdentityServer.controller
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     Responses<object>.InternalServerResponsee(e.Message, new {error = e.Message}));
             }
-
+            var  returnUser = new ProfileDTO(userDto,tokenResponse,usertoken);
+            return Ok(Responses<ProfileDTO>.OkResponse("login successful", returnUser));
         }
     }
 

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using identity.Data.Abstraction;
+using identity.Data.Extension;
 using identity.Data.Model;
 using identity.Data.Repository;
 using IdentityServer.configuration;
 using IdentityServer.Mapping;
+using IdentityServer4.AspNetIdentity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,11 +32,14 @@ namespace IdentityServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddControllers();
             var builder = services.AddIdentityServer()
+                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator<ResourceOwnerPasswordValidator>>()
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.Clients);
+                .AddInMemoryClients(Config.Clients)
+                .AddAspNetIdentity<User>();
+
             builder.AddDeveloperSigningCredential();
             services.AddHttpClient();
             services.AddDbContext<IdentityContext>(opt =>
@@ -52,6 +57,8 @@ namespace IdentityServer
             }).AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders(); 
             services.AddScoped<IUser,UserRepository>();
             services.AddAutoMapper(typeof(CreateProfile));
+            services.AddAuthorization();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

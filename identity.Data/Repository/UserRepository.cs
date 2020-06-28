@@ -1,7 +1,6 @@
 ﻿
 using System.Threading.Tasks;
 using identity.Data.Abstraction;
-using identity.Data.ExceptionHandler;
 using identity.Data.Model;
 using Microsoft.AspNetCore.Identity;
 

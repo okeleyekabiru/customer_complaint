@@ -31,15 +31,15 @@ namespace complaint_gateway.APi
             services.AddAuthentication()
                 .AddIdentityServerAuthentication(authenticationProviderKey, options =>
                 {
-                    options.Authority = "https://localhost:7005";
+                    options.Authority = "https://localhost:5001";
                     options.SaveToken = true;
                     options.Challenge = "complaint";
-                    options.MetadataAddress = "https://localhost:7005";
+                    options.MetadataAddress = "https://localhost:5001";
 
                 }, o =>
                 {
                     o.ClientId = "customer_complaint_client";
-                    o.Authority = "https://localhost:7005";
+                    o.Authority = "https://localhost:5001";
                     o.ClientSecret = "secret";
                 });
             // services.AddAuthorization(options =>
