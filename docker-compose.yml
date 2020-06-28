@@ -1,24 +1,24 @@
 version: '3.4'
 
 services:
-  complaint_api:
-    image: ${DOCKER_REGISTRY-}complaintapi
+  complaint_gateway.api:
+    image: ${DOCKER_REGISTRY-}complaintgatewayapi
     build:
       context: .
-      dockerfile: complaint_API\Dockerfile
+      dockerfile: complaint_gateway.APi\Dockerfile
 
-  complaint.test:
-    image: ${DOCKER_REGISTRY-}complainttest
+  gateway.test:
+    image: ${DOCKER_REGISTRY-}gatewaytest
     build:
       context: .
-      dockerfile: complaint.Test\Dockerfile
+      dockerfile: gateway.Test\Dockerfile
 
 
-  identity.api:
-    image: ${DOCKER_REGISTRY-}identityapi
+  identityserver:
+    image: ${DOCKER_REGISTRY-}identityserver
     build:
       context: .
-      dockerfile: identity.API\Dockerfile
+      dockerfile: IdentityServer\Dockerfile
 
 
   identity.test:
@@ -28,16 +28,16 @@ services:
       dockerfile: identity.test\Dockerfile
 
 
-  complaint_gateway.api:
-    image: ${DOCKER_REGISTRY-}complaintgatewayapi
+  complaint_api:
+    image: ${DOCKER_REGISTRY-}complaintapi
     build:
       context: .
-      dockerfile: complaint_gateway.APi\Dockerfile
+      dockerfile: complaint_API\Dockerfile
 
 
-  gateway.test:
-    image: ${DOCKER_REGISTRY-}gatewaytest
+  complaint.test:
+    image: ${DOCKER_REGISTRY-}complainttest
     build:
       context: .
-      dockerfile: gateway.Test\Dockerfile
+      dockerfile: complaint.Test\Dockerfile
 

@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>9efdd5ba-a448-4093-9643-5f8891390762</ProjectGuid>
+    <ProjectGuid>d3ff51da-05df-44e1-9ddd-5526374dc32b</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/weatherforecast</DockerServiceUrl>
-    <DockerServiceName>complaint_api</DockerServiceName>
+    <DockerServiceName>complaint_gateway.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
