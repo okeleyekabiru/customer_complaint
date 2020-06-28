@@ -9,7 +9,10 @@ using identity.Data.Model;
 using identity.Data.Repository;
 using IdentityServer.configuration;
 using IdentityServer.Mapping;
+using IdentityServer4.AccessTokenValidation;
 using IdentityServer4.AspNetIdentity;
+using IdentityServer4.Services;
+using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,14 +36,7 @@ namespace IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            var builder = services.AddIdentityServer()
-                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator<ResourceOwnerPasswordValidator>>()
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.Clients)
-                .AddAspNetIdentity<User>();
-
-            builder.AddDeveloperSigningCredential();
+            
             services.AddHttpClient();
             services.AddDbContext<IdentityContext>(opt =>
                 {
@@ -54,11 +50,23 @@ namespace IdentityServer
                 opt.Password.RequireNonAlphanumeric = true;
 
 
-            }).AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders(); 
+            }).AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
+
+            var builder = services.AddIdentityServer()
+                .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryClients(Config.Clients)
+                .AddAspNetIdentity<User>()
+                .AddProfileService<ResourceOwnerPasswordValidator.ProfileService>();
+            builder.AddDeveloperSigningCredential();
             services.AddScoped<IUser,UserRepository>();
             services.AddAutoMapper(typeof(CreateProfile));
             services.AddAuthorization();
-            
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            services.AddTransient<IProfileService, ResourceOwnerPasswordValidator.ProfileService>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +76,20 @@ namespace IdentityServer
             {
                 app.UseDeveloperExceptionPage();
             }
+            IdentityServerAuthenticationOptions identityServerValidationOptions = new IdentityServerAuthenticationOptions
+            {
+                //move host url into appsettings.json
+                Authority = "https://localhost:5001",
+                ApiSecret = "secret",
+                ApiName = "customer_complaint",
+                SupportedTokens = SupportedTokens.Both,
+
+                // required if you want to return a 403 and not a 401 for forbidden responses
+               
+
+                //change this to true for SLL
+                RequireHttpsMetadata = false
+            };
 
             app.UseRouting();
             app.UseIdentityServer();

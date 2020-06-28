@@ -13,6 +13,7 @@ namespace identity.Data.Abstraction
        Task<User> GetById(string userId);
        Task<User> GetUserByEmail(string email);
        Task<bool> VerifyEmailExits(string email);
-    
+       Task<bool> Commit();
+
    }
 }

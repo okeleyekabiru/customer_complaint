@@ -5,9 +5,9 @@ namespace IdentityServer.DTO
 {
     public class ProfileDTO
     {
-        private UserDto User { get; set; }
-        private string  ClientAccessToken { get; set; }
-        private int ClientAccessTokenExpiry { get; set; }
+        public UserDto User { get; set; }
+        public string  ClientAccessToken { get; set; }
+        public int ClientAccessTokenExpiry { get; set; }
         private string ClientScope { get; set; }
         public string UserScope { get; set; }
         public string UserToken { get; set; }

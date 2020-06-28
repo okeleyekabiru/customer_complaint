@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Response.Model
 {
-   public class Responses<T>
+   public  class Responses<T>
     {
-        public static OkResponse<T> OkResponse(string message , T body)
-        {
+        public static OkResponse<T> OkResponse(string message, T body) {
             return new OkResponse<T>(message, body);
 
         }

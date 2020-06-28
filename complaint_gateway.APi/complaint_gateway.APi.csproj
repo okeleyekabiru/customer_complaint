@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\gateway.Data\gateway.Data.csproj" />
+    <ProjectReference Include="..\IdentityServer\IdentityServer.csproj" />
   </ItemGroup>
 
 

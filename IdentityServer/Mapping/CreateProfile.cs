@@ -13,7 +13,8 @@ namespace IdentityServer.Mapping
         public CreateProfile()
         {
             CreateMap<User, UserDto>().ReverseMap();
-
+            CreateMap<User, RegisterDto>().ForMember(o => o.Password,p => p.Ignore() ).ReverseMap();
+            CreateMap<RegisterDto, UserDto>().ReverseMap();
         }
     }
 }

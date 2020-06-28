@@ -32,6 +32,7 @@ namespace identity.Data.Repository
         public async Task<User> Register(User user, string password)
         {
             user.UserName = user.Email;
+            user.EmailConfirmed = true;
           var result = await _userManager.CreateAsync(user, password);
           if (result.Succeeded)
           {
@@ -54,6 +55,11 @@ namespace identity.Data.Repository
         {
             var user = await _userManager.FindByEmailAsync(email);
             return user != null;
+        }
+
+        public async Task<bool> Commit()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }
